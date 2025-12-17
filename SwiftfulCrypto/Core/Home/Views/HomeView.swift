@@ -9,10 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Environment(HomeViewModel.self) var vm:HomeViewModel
+    @Environment(HomeViewModel.self) private var vm
     @State private var showPorfolio:Bool = false
     
     var body: some View {
+        @Bindable var bindableVm = vm
+        
         ZStack{
             // background layer
             Color.theme.background
@@ -22,6 +24,7 @@ struct HomeView: View {
             VStack{
                 homeHeader
                 
+                SearchBarView(searchText: $bindableVm.searchText)
                 columnTilte
                 
                 if !showPorfolio {
