@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct SwiftfulCryptoApp: App {
     
-    @State private var vm = HomeViewModel()
+    @StateObject private var vm = HomeViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -18,7 +18,7 @@ struct SwiftfulCryptoApp: App {
                 HomeView()
                     .toolbar(.hidden)
             }
-            .environment(vm)
+            .environmentObject(vm)
         }
     }
 }
